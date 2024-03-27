@@ -1,0 +1,20 @@
+\NeedsTeXFormat{LaTeX2e}[2024/03/06]
+\ProvidesPackage{Tracking}[2024/03/06]
+
+\RequirePackage[normalem]{ulem}
+\RequirePackage{xcolor}
+\RequirePackage{environ}
+\RequirePackage{cancel}
+
+\newcommand{\fulladd}[1]{{\color{blue}#1}}
+\newcommand{\fulldelete}[1]{{\color{red}\sout{#1}}}
+\newcommand{\fullreplace}[2]{{\color{red}\sout{#1}}{\color{blue}#2}}
+\newcommand{\fullmdelete}[1]{{\color{red}\text{\sout{\ensuremath{#1}}}}}
+\newcommand{\fullmreplace}[2]{{\color{red}\text{\sout{\ensuremath{#1}}}}{\color{blue}#2}}
+\newcommand{\fullnewstart}{\color{blue}} 
+\newcommand{\fullnewend}{\color{black}} 
+\newcommand{\fullnewpar}{{\color{blue}\rotatebox{180}{\raisebox{-1.2ex}{$\Rsh$}}}} 
+\newcommand{\fullnonewpar}{{\color{red}\rotatebox{180}{\raisebox{-1.2ex}{\sout{$\Rsh$}}}}} 
+\NewEnviron{fullremove}{{\color{red}\noindent\xcancel{\parbox{\linewidth}{\parindent=2ex \BODY}}}}{} 
+\NewEnviron{fulldalign}{\begin{align}\mdelete{\BODY}\end{align}}{}
+\endinput

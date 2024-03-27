@@ -1,0 +1,23 @@
+\NeedsTeXFormat{LaTeX2e}[2024/03/06]
+\ProvidesPackage{Tracking}[2024/03/06]
+
+\RequirePackage{xcolor}
+\RequirePackage{environ}
+
+\newcommand{\Referee}[1]{%
+	{
+	\setlength\parindent{0pt}
+	The Referee wrote:\\
+	``#1''\\%
+	}%
+}
+
+\newcommand{\Reply}[1]{%
+	{
+	Our reply:\\
+	\setlength\parindent{10pt}
+	\color{blue}%
+	#1\\%
+	}%
+}
+\endinput
