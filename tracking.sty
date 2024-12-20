@@ -28,6 +28,10 @@
 \newcommand{\newpar}{{\color{blue}\rotatebox{180}{\raisebox{-1.2ex}{$\Rsh$}}}}
 \newcommand{\nonewpar}{{\color{red}\rotatebox{180}{\raisebox{-1.2ex}{\sout{$\Rsh$}}}}}
 \NewEnviron{remove}{{\color{red}\noindent\xcancel{\parbox{\linewidth}{\parindent=2ex \BODY}}}}{}
-\NewEnviron{dalign}{\begin{align}\mdelete{\BODY}\end{align}}{}
-
+\NewEnviron{dalign}{\begin{align*}\mdelete{\BODY}\end{align*}}{}
+\NewEnviron{comment}[1][]{%
+	
+	\hspace*{-3ex}\colorbox{yellow!80}{\parbox{\columnwidth}{\color{green!40!black} \BODY}}
+	\\\vspace{0.1cm}\hspace*{-0.1cm}\noindent{\color{green!40!black}\fbox{\parbox{\columnwidth}{\color{green!20!black}#1}}}
+}
 \endinput

@@ -16,5 +16,7 @@
 \newcommand{\fullnewpar}{{\color{blue}\rotatebox{180}{\raisebox{-1.2ex}{$\Rsh$}}}} 
 \newcommand{\fullnonewpar}{{\color{red}\rotatebox{180}{\raisebox{-1.2ex}{\sout{$\Rsh$}}}}} 
 \NewEnviron{fullremove}{{\color{red}\noindent\xcancel{\parbox{\linewidth}{\parindent=2ex \BODY}}}}{} 
-\NewEnviron{fulldalign}{\begin{align}\mdelete{\BODY}\end{align}}{}
+\NewEnviron{fulldalign}{\begin{align*}\fullmdelete{\BODY}\end{align*}}{}
+\NewEnviron{comment}[1][]{}
+
 \endinput

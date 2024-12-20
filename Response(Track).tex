@@ -8,39 +8,7 @@
 \usepackage{graphicx}
 \setlength\parindent{0pt}
 
-\makeatletter
-\DeclareFontFamily{OMX}{MnSymbolE}{}
-\DeclareSymbolFont{MnLargeSymbols}{OMX}{MnSymbolE}{m}{n}
-\SetSymbolFont{MnLargeSymbols}{bold}{OMX}{MnSymbolE}{b}{n}
-\DeclareFontShape{OMX}{MnSymbolE}{m}{n}{
-	<-6>	MnSymbolE5
-	<6-7>	MnSymbolE6
-	<7-8>	MnSymbolE7
-	<8-9>	MnSymbolE8
-	<9-10>	MnSymbolE9
-	<10-12>	MnSymbolE10
-	<12->	MnSymbolE12
-}{}
-\DeclareFontShape{OMX}{MnSymbolE}{b}{n}{
-	<-6>	MnSymbolE-Bold5
-	<6-7>	MnSymbolE-Bold6
-	<7-8>	MnSymbolE-Bold7
-	<8-9>	MnSymbolE-Bold8
-	<9-10>	MnSymbolE-Bold9
-	<10-12>	MnSymbolE-Bold10
-	<12->	MnSymbolE-Bold12
-}{}
-
-\let\llangle\@undefined
-\let\rrangle\@undefined
-\DeclareMathDelimiter{\llangle}{\mathopen}{MnLargeSymbols}{'164}{MnLargeSymbols}{'164}
-\DeclareMathDelimiter{\rrangle}{\mathclose}{MnLargeSymbols}{'171}{MnLargeSymbols}{'171}
-\makeatother
-
-\newcommand{\numberthis}{tocounterequation{1}\tag{\theequation}}
-\newcommand{\Bra}[1]{\left\llangle #1 \right|}
-\newcommand{\Ket}[1]{\left| #1 \right\rrangle}
-\newcommand{\Braket}[2]{\left\llangle #1 \vphantom{#2} \right|\kern-0.6ex\left. #2 \vphantom{#1}\right\rrangle}
+\usepackage{usefulnotations}
 
 \newcommand{\Referee}[1]{%
 	{
@@ -59,48 +27,8 @@
 	}%
 }
 
-\usepackage[normalem]{ulem} % For FullTracking
-\usepackage{xcolor} % For FullTracking
-\usepackage{environ} % For FullTracking
-\usepackage{cancel} % For FullTracking
-\usepackage{pifont} % For FullTracking
-
-\newcommand{\fulladd}[1]{{\color{magenta}#1}} % For FullTracking
-\newcommand{\fulldelete}[1]{{\color{red}\sout{#1}}} % For FullTracking
-\newcommand{\fullreplace}[2]{{\color{red}\sout{#1}}{\color{magenta}#2}} % For FullTracking
-\newcommand{\fullmdelete}[1]{{\color{red}\text{\sout{\ensuremath{#1}}}}} % For FullTracking
-\newcommand{\fullmreplace}[2]{{\color{red}\text{\sout{\ensuremath{#1}}}}{\color{magenta}#2}} % For FullTracking
-\newcommand{\fullnewstart}{\color{magenta}} % For FullTracking
-\newcommand{\fullnewend}{\color{black}} % For FullTracking
-\newcommand{\fullnewpar}{{\color{magenta}\rotatebox{180}{\raisebox{-1.2ex}{$\Rsh$}}}} % For FullTracking
-\newcommand{\fullnonewpar}{{\color{red}\rotatebox{180}{\raisebox{-1.2ex}{\sout{$\Rsh$}}}}} % For FullTracking
-\NewEnviron{fullremove}{{\color{red}\noindent\xcancel{\parbox{\linewidth}{\parindent=2ex \BODY}}}}{} % For FullTracking
-\NewEnviron{fulldalign}{\begin{align}\mdelete{\BODY}\end{align}}{} % For FullTracking
-
-\renewcommand{\fulladd}[1]{#1} % For Tracking
-\renewcommand{\fulldelete}[1]{} % For Tracking
-\renewcommand{\fullreplace}[2]{#2} % For Tracking
-\renewcommand{\fullmdelete}[1]{} % For Tracking
-\renewcommand{\fullmreplace}[2]{#2} % For Tracking
-\renewcommand{\fullnewstart}{} % For Tracking
-\renewcommand{\fullnewend}{} % For Tracking
-\renewcommand{\fullnewpar}{} % For Tracking
-\renewcommand{\fullnonewpar}{} % For Tracking
-\renewenvironment{fullremove}{}{} % For Tracking
-\renewenvironment{fulldalign}{}{} % For Tracking
-
-\newcommand{\add}[1]{{\color{magenta}#1}} % For Tracking
-\newcommand{\delete}[1]{{\color{red}\sout{#1}}} % For Tracking
-\newcommand{\replace}[2]{{\color{red}\sout{#1}}{\color{magenta}#2}} % For Tracking
-\newcommand{\mdelete}[1]{{\color{red}\text{\sout{\ensuremath{#1}}}}} % For Tracking
-\newcommand{\mreplace}[2]{{\color{red}\text{\sout{\ensuremath{#1}}}}{\color{magenta}#2}} % For Tracking
-\newcommand{\newstart}{\color{magenta}} % For Tracking
-\newcommand{\newend}{\color{black}} % For Tracking
-\newcommand{\newpar}{{\color{magenta}\rotatebox{180}{\raisebox{-1.2ex}{$\Rsh$}}}} % For Tracking
-\newcommand{\nonewpar}{{\color{red}\rotatebox{180}{\raisebox{-1.2ex}{\sout{$\Rsh$}}}}} % For Tracking
-\NewEnviron{remove}{{\color{red}\noindent\xcancel{\parbox{\linewidth}{\parindent=2ex \BODY}}}}{} % For Tracking
-\NewEnviron{dalign}{\begin{align}\mdelete{\BODY}\end{align}}{} % For Tracking
+\usepackage{tracking}
 
 \begin{document}
-			
+	
 \end{document}

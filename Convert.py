@@ -106,7 +106,7 @@ for i in range(len(inp)):
 
     def Removing(line):
         global Empty;
-        groups = ['fulldalign', 'fullremove'];
+        groups = ['fulldalign', 'fullremove', 'comment'];
         for i in groups:
             if '\\begin{command}'.replace('command', i) in line:
                 Empty += 1;
@@ -123,8 +123,6 @@ for i in range(len(inp)):
 
     bar = progressbar.ProgressBar(maxval=100, widgets=[progressbar.Bar('=', '[', ']'), ' ', progressbar.Percentage()]);
     bar.start();
-
-    bar.update(30);
 
     Empty = 0;
     Lines = [];
@@ -269,6 +267,44 @@ for i in range(len(inp)):
             Linetemp = Linetemp.replace('\\nonewpar', '\\fullnonewpar');
             Linetemp = Linetemp.replace('\\begin{remove}', '\\begin{fullremove}');
             Linetemp = Linetemp.replace('\\end{remove}', '\\end{fullremove}');
+            Linetemp = Linetemp.replace('\\begin{dalign}', '\\begin{fulldalign}');
+            Linetemp = Linetemp.replace('\\end{dalign}', '\\end{fulldalign}');
+        if ("".join(Linetemp.split()) != "") and (all(c in '&\\' for c in "".join(Linetemp.split()))):
+            Linetemp = "";
+        Linetemp = RemoveEmptyTabs(Linetemp);
+        Lines.append(RemoveDoubleSpaces(Linetemp));
+
+    LineNum = 0;
+    for Line in Lines:
+        if (Line == '\n' or Line == '') and (Lines[LineNum - 1] == '\n' or Lines[LineNum - 1] == ''):
+            Line = '';
+        filewrite.writelines(Line);
+        LineNum += 1;
+
+    filewrite.close();
+
+    fileread = open(files[int(inp[i]) - 1].replace('(Track).tex','(FullTrack).tex'), 'r');
+    filewrite = open(files[int(inp[i]) - 1].replace('(Track).tex','.tex'), 'w');
+    ReadLines = fileread.readlines();
+    fileread.close();
+
+    Empty = 0;
+    Lines = [];
+    Linetemp = '';
+    for Line in ReadLines:
+        Linetemp = Line;
+        Linetemp = Removing(Linetemp);
+        Linetemp = Linetemp.replace('\\usepackage{fulltracking}', '');
+        #Remove('command', Line, Number of Removes, Number of Keeps)
+        Linetemp = Remove('\\fulladd', Linetemp, 0, 1);
+        Linetemp = Remove('\\fulldelete', Linetemp, 1, 0);
+        Linetemp = Remove('\\fullreplace', Linetemp, 1, 1);
+        Linetemp = Remove('\\fullmdelete', Linetemp, 1, 0);
+        Linetemp = Remove('\\fullmreplace', Linetemp, 1, 1);
+        Linetemp = Remove('\\fullnewstart', Linetemp, 0, 0);
+        Linetemp = Remove('\\fullnewend', Linetemp, 0, 0);
+        Linetemp = Remove('\\fullnewpar', Linetemp, 0, 0);
+        Linetemp = Remove('\\fullnonewpar', Linetemp, 0, 0);
         if ("".join(Linetemp.split()) != "") and (all(c in '&\\' for c in "".join(Linetemp.split()))):
             Linetemp = "";
         Linetemp = RemoveEmptyTabs(Linetemp);

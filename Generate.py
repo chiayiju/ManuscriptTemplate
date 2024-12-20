@@ -106,7 +106,7 @@ for i in range(len(inp)):
 
     def Removing(line):
         global Empty;
-        groups = ['fulldalign', 'fullremove'];
+        groups = ['fulldalign', 'fullremove', 'comment'];
         for i in groups:
             if '\\begin{command}'.replace('command', i) in line:
                 Empty += 1;
@@ -267,6 +267,8 @@ for i in range(len(inp)):
             Linetemp = Linetemp.replace('\\nonewpar', '\\fullnonewpar');
             Linetemp = Linetemp.replace('\\begin{remove}', '\\begin{fullremove}');
             Linetemp = Linetemp.replace('\\end{remove}', '\\end{fullremove}');
+            Linetemp = Linetemp.replace('\\begin{dalign}', '\\begin{fulldalign}');
+            Linetemp = Linetemp.replace('\\end{dalign}', '\\end{fulldalign}');
         if ("".join(Linetemp.split()) != "") and (all(c in '&\\' for c in "".join(Linetemp.split()))):
             Linetemp = "";
         Linetemp = RemoveEmptyTabs(Linetemp);
@@ -293,7 +295,7 @@ for i in range(len(inp)):
         Linetemp = Line;
         Linetemp = Removing(Linetemp);
         Linetemp = Linetemp.replace('\\usepackage{fulltracking}', '');
-        #Remove('command', Line, Number of Removes, Number or Keeps)
+        #Remove('command', Line, Number of Removes, Number of Keeps)
         Linetemp = Remove('\\fulladd', Linetemp, 0, 1);
         Linetemp = Remove('\\fulldelete', Linetemp, 1, 0);
         Linetemp = Remove('\\fullreplace', Linetemp, 1, 1);
